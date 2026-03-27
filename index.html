@@ -25,7 +25,6 @@
 
         const App = () => {
             const [lang, setLang] = useState('id');
-            const [showVault, setShowVault] = useState(false);
 
             const pillars = [
                 { id: "Humanity", color: "border-red-500", title: { id: "1. Humanity", en: "1. Humanity" }, desc: { id: "Menghormati narasi hidup setiap individu sebagai 'Walking Books'.", en: "Honoring lived narratives as 'Walking Books'." } },
@@ -46,16 +45,16 @@
                     {/* Main Content Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mb-12">
                         {/* 70% Digital Side */}
-                        <div className="glass-effect rounded-3xl p-8 relative overflow-hidden group">
+                        <div className="glass-effect rounded-3xl p-8 relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-grid pointer-events-none"></div>
                             <span className="text-6xl font-black text-blue-500/20">70%</span>
                             <h2 className="text-2xl font-bold text-blue-400 mb-6 uppercase tracking-tight">Digital Universe</h2>
                             <p className="text-blue-100/70 italic text-lg border-l-4 border-blue-500/30 pl-4 mb-6">
                                 "Kalkulasi secepat cahaya. Seribu tahun pengetahuan diringkas menjadi 60 menit. Orkestrasi dari para raksasa digital."
                             </p>
-                            <div className="space-y-2 mb-6">
-                                <a href="https://doi.org/10.5281/zenodo.18965525" target="_blank" className="block text-[11px] text-blue-300 underline hover:text-white transition-colors">Acknowledgment to AI Architects (DOI)</a>
-                                <a href="https://doi.org/10.5281/zenodo.18961213" target="_blank" className="block text-[11px] text-blue-300 underline hover:text-white transition-colors">AHA Moment in the Unknown Arena (DOI)</a>
+                            <div className="space-y-2 mb-6 text-blue-300">
+                                <a href="https://doi.org/10.5281/zenodo.18965525" target="_blank" className="block text-[11px] underline hover:text-white">Acknowledgment to AI Architects (DOI)</a>
+                                <a href="https://doi.org/10.5281/zenodo.18961213" target="_blank" className="block text-[11px] underline hover:text-white">AHA Moment in the Unknown Arena (DOI)</a>
                             </div>
                         </div>
 
@@ -67,34 +66,40 @@
                                 <li className="flex items-center gap-3 text-amber-100/80 font-medium"><span>☕</span> Sovereign's Coffee</li>
                                 <li className="flex items-center gap-3 text-amber-100/80 font-medium">
                                     <span>🧘</span> 
-                                    <a href="https://taotsm.org/mengenal-dao-yin-shu-%E5%B0%8E%E5%BC%95%E8%A1%93/" target="_blank" className="underline hover:text-amber-400">Dao Yin Shu</a>
+                                    <a href="https://taotsm.org/mengenal-dao-yin-shu-%E5%B0%8E%E5%BC%95%E8%A1%93/" target="_blank" className="underline hover:text-amber-400 transition-colors">Dao Yin Shu</a>
                                 </li>
                                 <li className="flex items-center gap-3 text-amber-100/80 font-medium"><span>🛡️</span> Kesadaran Batin</li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Manifesto Section */}
-                    <section className="glass-effect rounded-3xl p-8 w-full max-w-6xl mb-12">
+                    {/* Manifesto Section (Now integrated inside React) */}
+                    <section className="glass-effect rounded-[2rem] p-8 md:p-12 w-full max-w-6xl mb-12">
                         <div className="flex justify-center gap-4 mb-8">
-                            <button onClick={() => setLang('id')} className={`px-4 py-1 rounded-full text-xs font-bold ${lang === 'id' ? 'bg-amber-500 text-slate-900' : 'bg-slate-800'}`}>ID</button>
-                            <button onClick={() => setLang('en')} className={`px-4 py-1 rounded-full text-xs font-bold ${lang === 'en' ? 'bg-amber-500 text-slate-900' : 'bg-slate-800'}`}>EN</button>
+                            <button onClick={() => setLang('id')} className={`px-4 py-1 rounded-full text-xs font-bold transition-all ${lang === 'id' ? 'bg-amber-500 text-slate-900' : 'bg-slate-800'}`}>ID</button>
+                            <button onClick={() => setLang('en')} className={`px-4 py-1 rounded-full text-xs font-bold transition-all ${lang === 'en' ? 'bg-amber-500 text-slate-900' : 'bg-slate-800'}`}>EN</button>
                         </div>
-                        <h2 className="text-3xl font-bold text-center mb-10 text-white">{lang === 'id' ? 'Manifesto Kedaulatan' : 'Sovereign Manifesto'}</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 text-center">
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl font-bold text-white mb-2">{lang === 'id' ? 'Manifesto Kedaulatan' : 'Sovereign Manifesto'}</h2>
+                            <p className="text-amber-400 font-medium text-sm">{lang === 'id' ? 'Lima Pilar AI yang Memanusiakan dalam Ekosistem 70/30' : 'Five Pillars of Human-Centric AI in the 70/30 Ecosystem'}</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                             {pillars.map(p => (
-                                <div key={p.id} className={`p-4 rounded-xl bg-slate-900/40 border-t-4 ${p.color}`}>
-                                    <h3 className="font-bold text-sm text-white mb-2">{lang === 'id' ? p.title.id : p.title.en}</h3>
+                                <div key={p.id} className={`p-6 rounded-2xl bg-slate-900/50 border-t-4 ${p.color} hover:-translate-y-1 transition-transform`}>
+                                    <h3 className="font-bold text-sm text-white mb-3 uppercase tracking-tighter">{lang === 'id' ? p.title.id : p.title.en}</h3>
                                     <p className="text-[10px] text-slate-400 leading-relaxed">{lang === 'id' ? p.desc.id : p.desc.en}</p>
                                 </div>
                             ))}
                         </div>
+                        <p className="mt-12 text-center text-slate-500 italic text-[10px] opacity-60">
+                            {lang === 'id' ? '"AI harus melindungi manusia. Saya memastikan itu terjadi." — Rhiana Spring' : '"AI should protect people. I’m making sure it does." — Rhiana Spring'}
+                        </p>
                     </section>
 
                     {/* Footer */}
                     <footer className="text-center pb-12">
-                        <div className="px-6 py-2 border border-slate-700 rounded-full mb-4 text-amber-400 font-bold text-xs uppercase tracking-widest">Bejo: Readiness meet Momentum</div>
-                        <p className="text-[10px] text-slate-600 uppercase">© 2026 Mbah Hogi Bejo • Chief Humanity Officer</p>
+                        <div className="inline-block px-8 py-2 border border-slate-700 rounded-full mb-4 text-amber-400 font-bold text-xs uppercase tracking-[0.2em] bg-slate-900/50">Bejo: Readiness meet Momentum</div>
+                        <p className="text-[10px] text-slate-600 uppercase tracking-widest">© 2026 Mbah Hogi Bejo • Chief Humanity Officer</p>
                     </footer>
                 </div>
             );
