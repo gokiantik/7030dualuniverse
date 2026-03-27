@@ -237,7 +237,83 @@
                             </div>
                         </div>
                     </div>
+<section id="sovereign-manifesto" style="padding: 80px 20px; background: linear-gradient(180deg, #ffffff 0%, #f4f7f6 100%); border-top: 1px solid #eee;">
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+        
+        <div style="margin-bottom: 30px; display: flex; justify-content: center; gap: 10px;">
+            <button onclick="setLanguage('id')" id="btn-id" style="padding: 10px 20px; border: 2px solid #2c3e50; border-radius: 30px; background: #2c3e50; color: white; cursor: pointer; font-weight: bold; transition: 0.3s;">Bahasa Indonesia</button>
+            <button onclick="setLanguage('en')" id="btn-en" style="padding: 10px 20px; border: 2px solid #2c3e50; border-radius: 30px; background: white; color: #2c3e50; cursor: pointer; font-weight: bold; transition: 0.3s;">English</button>
+        </div>
 
+        <div class="lang-id">
+            <h2 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 10px;">Manifesto Kedaulatan</h2>
+            <p style="color: #16a085; font-size: 1.2rem; font-weight: 500;">Lima Pilar AI yang Memanusiakan dalam Ekosistem 70/30</p>
+        </div>
+        <div class="lang-en" style="display: none;">
+            <h2 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 10px;">The Sovereign Manifesto</h2>
+            <p style="color: #16a085; font-size: 1.2rem; font-weight: 500;">Five Pillars of Human-Centric AI in the 70/30 Ecosystem</p>
+        </div>
+
+        <div style="margin: 40px 0;">
+            <img src="path/ke/gambar/mandala_koko.jpg" alt="The Sovereign Mandala" style="width: 100%; max-width: 600px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; text-align: left; margin-top: 50px;">
+            
+            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #e74c3c;">
+                <h3 style="color: #e74c3c;">1. Humanity</h3>
+                <p class="lang-id">Menghormati narasi hidup dan kebenaran emosional setiap individu sebagai "Walking Books".</p>
+                <p class="lang-en" style="display: none;">Honoring lived narratives and emotional truths as "Walking Books".</p>
+            </div>
+
+            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #f39c12;">
+                <h3 style="color: #f39c12;">2. Sovereignty</h3>
+                <p class="lang-id">Memberdayakan manusia untuk bangkit dan merebut kembali kedaulatan diri (自主者).</p>
+                <p class="lang-en" style="display: none;">Empowering individuals to rise and reclaim their self-governance (自主者).</p>
+            </div>
+
+            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #3498db;">
+                <h3 style="color: #3498db;">3. Dignity</h3>
+                <p class="lang-id">Teknologi memperlakukan manusia sebagai subjek sakral, bukan titik data.</p>
+                <p class="lang-en" style="display: none;">Technology treating humans as sacred subjects, never mere data points.</p>
+            </div>
+
+            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #27ae60;">
+                <h3 style="color: #27ae60;">4. Family</h3>
+                <p class="lang-id">Melindungi akar koneksi dan membangun warisan digital yang aman.</p>
+                <p class="lang-en" style="display: none;">Protecting human roots and building a safe digital legacy.</p>
+            </div>
+
+            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #8e44ad;">
+                <h3 style="color: #8e44ad;">5. Ubuntu</h3>
+                <p class="lang-id">"I am because we are"—kebangkitan kolektif adalah jalan yang paling jitu.</p>
+                <p class="lang-en" style="display: none;">"I am because we are"—collective rise is the most effective path.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+function setLanguage(lang) {
+    const idEl = document.querySelectorAll('.lang-id');
+    const enEl = document.querySelectorAll('.lang-en');
+    const bId = document.getElementById('btn-id');
+    const bEn = document.getElementById('btn-en');
+
+    if (lang === 'en') {
+        idEl.forEach(e => e.style.display = 'none');
+        enEl.forEach(e => e.style.display = 'block');
+        bEn.style.background = '#2c3e50'; bEn.style.color = 'white';
+        bId.style.background = 'white'; bId.style.color = '#2c3e50';
+    } else {
+        idEl.forEach(e => e.style.display = 'block');
+        enEl.forEach(e => e.style.display = 'none');
+        bId.style.background = '#2c3e50'; bId.style.color = 'white';
+        bEn.style.background = 'white'; bEn.style.color = '#2c3e50';
+    }
+}
+</script>
                     <footer className="z-10 mt-12 text-center max-w-3xl">
                         <div className="inline-block px-8 py-3 rounded-full border border-slate-700 bg-slate-900/80 mb-6 shadow-xl shadow-blue-900/10 hover:border-amber-500/50 transition-colors cursor-pointer group">
                             <span className="text-amber-400 font-bold tracking-[0.3em] text-xs md:text-sm group-hover:text-amber-300 uppercase">Bejo: Readiness meet Momentum</span>
