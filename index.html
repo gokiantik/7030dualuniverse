@@ -97,6 +97,7 @@
             const [activeSide, setActiveSide] = useState(null);
             const [showVault, setShowVault] = useState(false);
             const [copiedIndex, setCopiedIndex] = useState(null);
+            const [lang, setLang] = useState('id');
 
             const learningVault = [
                 { title: "1. The 80/20 Shortcut", prompt: "Saya ingin belajar [topik] dalam 20 jam. Buatkan rencana yang fokus hanya pada 20% hal terpenting. Bagi menjadi 10 blok waktu masing-masing 2 jam. Setiap blok harus berisi: apa yang harus dipelajari, satu sumber daya utama, dan cek pemahaman 15 menit di akhir." },
@@ -117,14 +118,47 @@
                 setTimeout(() => setCopiedIndex(null), 2000);
             };
 
+            const pillars = [
+                { 
+                    id: "Humanity", 
+                    color: "border-red-500", 
+                    title: { id: "1. Humanity", en: "1. Humanity" },
+                    desc: { id: "Menghormati narasi hidup dan kebenaran emosional setiap individu sebagai 'Walking Books'.", en: "Honoring lived narratives and emotional truths as 'Walking Books'." } 
+                },
+                { 
+                    id: "Sovereignty", 
+                    color: "border-amber-500", 
+                    title: { id: "2. Sovereignty", en: "2. Sovereignty" },
+                    desc: { id: "Memberdayakan manusia untuk bangkit dan merebut kembali kedaulatan diri (自主者).", en: "Empowering individuals to rise and reclaim their self-governance (自主者)." } 
+                },
+                { 
+                    id: "Dignity", 
+                    color: "border-blue-500", 
+                    title: { id: "3. Dignity", en: "3. Dignity" },
+                    desc: { id: "Teknologi memperlakukan manusia sebagai subjek sakral, bukan titik data.", en: "Technology treating humans as sacred subjects, never mere data points." } 
+                },
+                { 
+                    id: "Family", 
+                    color: "border-green-500", 
+                    title: { id: "4. Family", en: "4. Family" },
+                    desc: { id: "Melindungi akar koneksi dan membangun warisan digital yang aman.", en: "Protecting human roots and building a safe digital legacy." } 
+                },
+                { 
+                    id: "Ubuntu", 
+                    color: "border-purple-500", 
+                    title: { id: "5. Ubuntu", en: "5. Ubuntu" },
+                    desc: { id: "'I am because we are'—kebangkitan kolektif adalah jalan yang paling jitu.", en: "'I am because we are'—collective rise is the most effective path." } 
+                }
+            ];
+
             return (
-                <div className="min-h-screen text-slate-100 flex flex-col items-center justify-center p-4 overflow-hidden relative">
+                <div className="min-h-screen text-slate-100 flex flex-col items-center justify-center p-4 overflow-hidden relative custom-scrollbar overflow-y-auto">
                     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900/10 blur-[120px] rounded-full" />
                         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-amber-900/10 blur-[120px] rounded-full" />
                     </div>
 
-                    <header className="z-10 text-center mb-8">
+                    <header className="z-10 text-center mb-8 mt-12">
                         <h1 className="text-4xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-amber-200 to-amber-500 bg-clip-text text-transparent mb-4 tracking-tight">
                             70/30 Dual Universe
                         </h1>
@@ -133,7 +167,7 @@
                         </div>
                     </header>
 
-                    <div className="z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6 relative">
+                    <div className="z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6 relative mb-12">
                         <div 
                             className={`col-span-1 md:col-span-8 rounded-[2rem] p-8 transition-all duration-700 glass-effect flex flex-col justify-between relative overflow-hidden group
                                 ${activeSide === 'digital' ? 'border-blue-500/40 bg-blue-950/20' : ''}`}
@@ -145,7 +179,7 @@
                                 <div>
                                     <div className="text-blue-500 font-bold tracking-tighter text-sm mb-1 uppercase">Dimensi A</div>
                                     <span className="text-7xl font-black text-blue-500/10">70%</span>
-                                    <h2 className="text-4xl font-bold text-blue-400 mt-2">DIGITAL UNIVERSE</h2>
+                                    <h2 className="text-4xl font-bold text-blue-400 mt-2 uppercase">Digital Universe</h2>
                                 </div>
                                 <CpuIcon className={`w-12 h-12 text-blue-400/50 transition-transform duration-700 ${activeSide === 'digital' ? 'rotate-180 text-blue-400' : ''}`} />
                             </div>
@@ -237,84 +271,35 @@
                             </div>
                         </div>
                     </div>
-<section id="sovereign-manifesto" style="padding: 80px 20px; background: linear-gradient(180deg, #ffffff 0%, #f4f7f6 100%); border-top: 1px solid #eee;">
-    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-        
-        <div style="margin-bottom: 30px; display: flex; justify-content: center; gap: 10px;">
-            <button onclick="setLanguage('id')" id="btn-id" style="padding: 10px 20px; border: 2px solid #2c3e50; border-radius: 30px; background: #2c3e50; color: white; cursor: pointer; font-weight: bold; transition: 0.3s;">Bahasa Indonesia</button>
-            <button onclick="setLanguage('en')" id="btn-en" style="padding: 10px 20px; border: 2px solid #2c3e50; border-radius: 30px; background: white; color: #2c3e50; cursor: pointer; font-weight: bold; transition: 0.3s;">English</button>
-        </div>
 
-        <div class="lang-id">
-            <h2 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 10px;">Manifesto Kedaulatan</h2>
-            <p style="color: #16a085; font-size: 1.2rem; font-weight: 500;">Lima Pilar AI yang Memanusiakan dalam Ekosistem 70/30</p>
-        </div>
-        <div class="lang-en" style="display: none;">
-            <h2 style="color: #2c3e50; font-size: 2.5rem; margin-bottom: 10px;">The Sovereign Manifesto</h2>
-            <p style="color: #16a085; font-size: 1.2rem; font-weight: 500;">Five Pillars of Human-Centric AI in the 70/30 Ecosystem</p>
-        </div>
+                    <section className="z-10 w-full max-w-6xl glass-effect rounded-[2rem] p-10 mb-12 relative overflow-hidden">
+                        <div className="flex justify-center gap-4 mb-8">
+                            <button onClick={() => setLang('id')} className={`px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${lang === 'id' ? 'bg-amber-500 text-slate-900 shadow-lg shadow-amber-500/20' : 'bg-slate-800 text-slate-400 border border-slate-700'}`}>Bahasa Indonesia</button>
+                            <button onClick={() => setLang('en')} className={`px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all ${lang === 'en' ? 'bg-amber-500 text-slate-900 shadow-lg shadow-amber-500/20' : 'bg-slate-800 text-slate-400 border border-slate-700'}`}>English</button>
+                        </div>
 
-        <div style="margin: 40px 0;">
-            <img src="path/ke/gambar/mandala_koko.jpg" alt="The Sovereign Mandala" style="width: 100%; max-width: 600px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-        </div>
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">{lang === 'id' ? 'Manifesto Kedaulatan' : 'The Sovereign Manifesto'}</h2>
+                            <p className="text-amber-400 font-medium tracking-wide">{lang === 'id' ? 'Lima Pilar AI yang Memanusiakan dalam Ekosistem 70/30' : 'Five Pillars of Human-Centric AI in the 70/30 Ecosystem'}</p>
+                        </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; text-align: left; margin-top: 50px;">
-            
-            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #e74c3c;">
-                <h3 style="color: #e74c3c;">1. Humanity</h3>
-                <p class="lang-id">Menghormati narasi hidup dan kebenaran emosional setiap individu sebagai "Walking Books".</p>
-                <p class="lang-en" style="display: none;">Honoring lived narratives and emotional truths as "Walking Books".</p>
-            </div>
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            {pillars.map((p) => (
+                                <div key={p.id} className={`p-6 rounded-2xl bg-slate-900/50 border-t-4 ${p.color} transition-transform hover:-translate-y-1`}>
+                                    <h3 className="text-white font-bold mb-3 text-sm">{lang === 'id' ? p.title.id : p.title.en}</h3>
+                                    <p className="text-slate-400 text-xs leading-relaxed">{lang === 'id' ? p.desc.id : p.desc.en}</p>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="mt-12 text-center opacity-40 hover:opacity-100 transition-opacity">
+                            <p className="text-slate-500 italic text-[10px] md:text-xs">
+                                {lang === 'id' ? '"AI harus melindungi manusia. Saya memastikan itu terjadi." — Rhiana Spring' : '"AI should protect people. I’m making sure it does." — Rhiana Spring'}
+                            </p>
+                        </div>
+                    </section>
 
-            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #f39c12;">
-                <h3 style="color: #f39c12;">2. Sovereignty</h3>
-                <p class="lang-id">Memberdayakan manusia untuk bangkit dan merebut kembali kedaulatan diri (自主者).</p>
-                <p class="lang-en" style="display: none;">Empowering individuals to rise and reclaim their self-governance (自主者).</p>
-            </div>
-
-            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #3498db;">
-                <h3 style="color: #3498db;">3. Dignity</h3>
-                <p class="lang-id">Teknologi memperlakukan manusia sebagai subjek sakral, bukan titik data.</p>
-                <p class="lang-en" style="display: none;">Technology treating humans as sacred subjects, never mere data points.</p>
-            </div>
-
-            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #27ae60;">
-                <h3 style="color: #27ae60;">4. Family</h3>
-                <p class="lang-id">Melindungi akar koneksi dan membangun warisan digital yang aman.</p>
-                <p class="lang-en" style="display: none;">Protecting human roots and building a safe digital legacy.</p>
-            </div>
-
-            <div style="padding: 25px; background: white; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-top: 5px solid #8e44ad;">
-                <h3 style="color: #8e44ad;">5. Ubuntu</h3>
-                <p class="lang-id">"I am because we are"—kebangkitan kolektif adalah jalan yang paling jitu.</p>
-                <p class="lang-en" style="display: none;">"I am because we are"—collective rise is the most effective path.</p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<script>
-function setLanguage(lang) {
-    const idEl = document.querySelectorAll('.lang-id');
-    const enEl = document.querySelectorAll('.lang-en');
-    const bId = document.getElementById('btn-id');
-    const bEn = document.getElementById('btn-en');
-
-    if (lang === 'en') {
-        idEl.forEach(e => e.style.display = 'none');
-        enEl.forEach(e => e.style.display = 'block');
-        bEn.style.background = '#2c3e50'; bEn.style.color = 'white';
-        bId.style.background = 'white'; bId.style.color = '#2c3e50';
-    } else {
-        idEl.forEach(e => e.style.display = 'block');
-        enEl.forEach(e => e.style.display = 'none');
-        bId.style.background = '#2c3e50'; bId.style.color = 'white';
-        bEn.style.background = 'white'; bEn.style.color = '#2c3e50';
-    }
-}
-</script>
-                    <footer className="z-10 mt-12 text-center max-w-3xl">
+                    <footer className="z-10 text-center max-w-3xl pb-12">
                         <div className="inline-block px-8 py-3 rounded-full border border-slate-700 bg-slate-900/80 mb-6 shadow-xl shadow-blue-900/10 hover:border-amber-500/50 transition-colors cursor-pointer group">
                             <span className="text-amber-400 font-bold tracking-[0.3em] text-xs md:text-sm group-hover:text-amber-300 uppercase">Bejo: Readiness meet Momentum</span>
                         </div>
