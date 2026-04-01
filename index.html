@@ -3,16 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>70/30 Dual Universe - The Sovereign Blueprint</title>
+    
+    <title>70/30 Dual Universe - The Sovereign Blueprint by Go Kian Tik</title>
+    <meta name="description" content="Cetak Biru Meta-Kognitif oleh Go Kian Tik. Orkestrasi 5 AI untuk menutup jurang pengetahuan 1000 tahun dalam 60 menit.">
+    <meta name="author" content="Go Kian Tik (The Sovereign One)">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "70/30 Dual Universe Dashboard",
+      "author": {
+        "@type": "Person",
+        "name": "Go Kian Tik",
+        "alternateName": "The Sovereign One (自主者)",
+        "jobTitle": "AI Meta-Cognitive Architect & Chief Humanity Officer",
+        "url": "https://www.linkedin.com/in/gokiantik",
+        "sameAs": [
+          "https://gokiantik.github.io/chiefhumanityofficer/",
+          "https://www.linkedin.com/in/gokiantik"
+        ]
+      }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #001220; color: #f1f5f9; margin: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #001220; }
         .bg-grid { background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 20px 20px; }
         .glass-effect { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .prompt-card { background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.1); transition: all 0.3s ease; }
+        .prompt-card:hover { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 10px; }
     </style>
@@ -23,114 +48,150 @@
     <script type="text/babel">
         const { useState } = React;
 
-        const App = () => {
-            const [lang, setLang] = useState('id');
+        const CpuIcon = ({ className }) => (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line>
+            </svg>
+        );
 
-            const pillars = [
-                { id: "Humanity", color: "border-red-500", title: { id: "1. Humanity", en: "1. Humanity" }, desc: { id: "Menghormati narasi hidup setiap individu sebagai 'Walking Books'.", en: "Honoring lived narratives as 'Walking Books'." } },
-                { id: "Sovereignty", color: "border-amber-500", title: { id: "2. Sovereignty", en: "2. Sovereignty" }, desc: { id: "Memberdayakan manusia untuk merebut kembali kedaulatan diri (自主者).", en: "Empowering individuals to reclaim self-governance (自主者)." } },
-                { id: "Dignity", color: "border-blue-500", title: { id: "3. Dignity", en: "3. Dignity" }, desc: { id: "Teknologi memperlakukan manusia sebagai subjek sakral, bukan titik data.", en: "Technology treating humans as sacred subjects, never data points." } },
-                { id: "Family", color: "border-green-500", title: { id: "4. Family", en: "4. Family" }, desc: { id: "Melindungi akar koneksi dan membangun warisan digital aman.", en: "Protecting human roots and building a safe digital legacy." } },
-                { id: "Ubuntu", color: "border-purple-500", title: { id: "5. Ubuntu", en: "5. Ubuntu" }, desc: { id: "'I am because we are'—kebangkitan kolektif adalah jalan paling jitu.", en: "'I am because we are'—collective rise is the most effective path." } }
+        const ZapIcon = ({ className }) => (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+        );
+
+        const ExternalLinkIcon = ({ className }) => (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+        );
+
+        const App = () => {
+            const [activeSide, setActiveSide] = useState(null);
+            const [showVault, setShowVault] = useState(false);
+            const [copiedIndex, setCopiedIndex] = useState(null);
+
+            const learningVault = [
+                { title: "1. The 80/20 Shortcut", prompt: "I want to learn [topic] in 20 hours. Build me a plan that focuses only on what matters most. Split it into 10 two-hour blocks. Each block needs: what to learn, one resource, and a quick 15-minute check at the end." },
+                { title: "2. The One-Pager", prompt: "Ringkas [topic] menjadi satu halaman yang bisa saya tinjau dalam 5 menit. Sertakan: konsep inti, bagaimana keterkaitannya, kesalahan umum pemula, dan satu contoh nyata." },
+                { title: "3. Teach Me Like I'm 12", prompt: "Jelaskan [topic] menggunakan kata-kata yang dipahami anak usia 12 tahun. Jangan gunakan jargon. Gunakan analogi dari kehidupan sehari-hari." },
+                { title: "4. The Skill Ladder", prompt: "Petakan [topic] menjadi 5 tingkat kemahiran yang jelas. Untuk setiap tingkat beritahu saya: apa yang bisa saya lakukan dan apa yang harus dipelajari." },
+                { title: "5. Beginner Traps to Skip", prompt: "Apa hal-hal yang biasanya membuang-buang waktu orang saat mempelajari [topic]? Berikan saya 5 jebakan terbesar bagi pemula." }
             ];
 
+            const copyToClipboard = (text, index) => {
+                const el = document.createElement('textarea');
+                el.value = text; document.body.appendChild(el); el.select();
+                document.execCommand('copy'); document.body.removeChild(el);
+                setCopiedIndex(index); setTimeout(() => setCopiedIndex(null), 2000);
+            };
+
             return (
-                <div className="min-h-screen p-4 md:p-8 flex flex-col items-center custom-scrollbar">
-                    {/* Header Section */}
-                    <header className="text-center mb-12 pt-8">
-                        <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-amber-500 bg-clip-text text-transparent mb-2 uppercase">70/30 Dual Universe</h1>
-                        <p className="text-blue-300 text-xs tracking-[0.3em] uppercase">The Sovereign Blueprint by Go Kian Tik</p>
+                <div className="min-h-screen text-slate-100 flex flex-col items-center justify-center p-4 overflow-hidden relative">
+                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
+                        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-900 blur-[120px] rounded-full" />
+                        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-amber-900 blur-[120px] rounded-full" />
+                    </div>
+
+                    <header className="z-10 text-center mb-8">
+                        <h1 className="text-4xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-amber-200 to-amber-500 bg-clip-text text-transparent mb-4 tracking-tight">
+                            70/30 Dual Universe
+                        </h1>
+                        <div className="flex flex-col items-center gap-2">
+                            <div className="inline-block px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs md:text-sm tracking-widest uppercase italic">
+                                The Sovereign Blueprint by Gemini
+                            </div>
+                            <a 
+                                href="https://gokiantik.github.io/chiefhumanityofficer/CHO_Sovereignty_KKM_Ep23_Complete.html" 
+                                target="_blank"
+                                className="flex items-center gap-2 text-[10px] text-amber-400 hover:text-amber-200 transition-colors uppercase tracking-[0.2em] font-bold mt-2 border-b border-amber-500/30 pb-1"
+                            >
+                                <ExternalLinkIcon className="w-3 h-3" />
+                                Baca Manifesto Lengkap (Ep. 23)
+                            </a>
+                        </div>
                     </header>
 
-                    {/* Dashboard Cards Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mb-16">
-                        
-                        {/* 70% Digital Side */}
-                        <div className="glass-effect rounded-[2.5rem] p-10 relative overflow-hidden">
-                            <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-grid pointer-events-none"></div>
+                    <div className="z-10 w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6 relative">
+                        <div 
+                            className={`col-span-1 md:col-span-8 rounded-[2rem] p-8 transition-all duration-700 glass-effect flex flex-col justify-between relative overflow-hidden group
+                                ${activeSide === 'digital' ? 'border-blue-500/40 bg-blue-950/20' : ''}`}
+                            onMouseEnter={() => setActiveSide('digital')} onMouseLeave={() => setActiveSide(null)}
+                        >
+                            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none bg-grid" />
                             <div className="flex justify-between items-start mb-6">
-                                <h2 className="text-3xl font-bold text-blue-400 uppercase tracking-tight">Digital Universe</h2>
-                                <span className="text-5xl font-black text-blue-500/20">70%</span>
+                                <div>
+                                    <div className="text-blue-500 font-bold tracking-tighter text-sm mb-1 uppercase text-left">Dimension A</div>
+                                    <span className="text-8xl font-black text-blue-500/10">70%</span>
+                                    <h2 className="text-4xl font-bold text-blue-400 mt-2">DIGITAL UNIVERSE</h2>
+                                </div>
+                                <CpuIcon className={`w-12 h-12 text-blue-400/50 transition-transform duration-700 ${activeSide === 'digital' ? 'rotate-180 text-blue-400' : ''}`} />
                             </div>
-                            <p className="text-blue-100/80 italic text-xl border-l-4 border-blue-500/30 pl-6 mb-8 leading-relaxed">
-                                "Kalkulasi secepat cahaya. Seribu tahun pengetahuan diringkas menjadi 60 menit. Orkestrasi dari para raksasa digital."
-                            </p>
-                            <div className="space-y-3 pt-4 border-t border-blue-500/10">
-                                <p className="text-[10px] text-blue-400 uppercase font-bold tracking-widest">Zenodo / DOI References:</p>
-                                <a href="https://doi.org/10.5281/zenodo.18965525" target="_blank" className="block text-xs text-blue-300 underline hover:text-white transition-colors">Acknowledgment to AI Architects (DOI)</a>
-                                <a href="https://doi.org/10.5281/zenodo.18961213" target="_blank" className="block text-xs text-blue-300 underline hover:text-white transition-colors">From AI Mirror to Universal Awakening (DOI)</a>
+
+                            <div className="bg-blue-500/5 border border-blue-500/20 rounded-2xl p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-2">
+                                        <ZapIcon className="w-5 h-5 text-blue-400" />
+                                        <span className="text-blue-200 font-bold uppercase tracking-wider text-sm">AI Learning Vault</span>
+                                    </div>
+                                    <button onClick={() => setShowVault(!showVault)} className="px-3 py-1 bg-blue-500/20 hover:bg-blue-500/40 border border-blue-400/30 rounded-full text-[10px] font-bold transition-all uppercase">
+                                        {showVault ? 'Close' : 'Open Vault'}
+                                    </button>
+                                </div>
+                                {showVault ? (
+                                    <div className="space-y-2 max-h-[220px] overflow-y-auto pr-2 custom-scrollbar text-left">
+                                        {learningVault.map((p, i) => (
+                                            <div key={i} onClick={() => copyToClipboard(p.prompt, i)} className="prompt-card p-3 rounded-xl cursor-pointer relative group/card">
+                                                <div className="text-[10px] font-bold text-blue-400 mb-1">{p.title}</div>
+                                                <p className="text-[11px] text-blue-100/60 line-clamp-1 italic">{p.prompt}</p>
+                                                <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover/card:opacity-100 transition-opacity">
+                                                    <span className="text-[9px] bg-blue-500/40 px-2 py-1 rounded text-white font-bold">{copiedIndex === i ? 'COPIED!' : 'COPY PROMPT'}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-blue-100/70 italic text-lg leading-relaxed border-l-4 border-blue-500/30 pl-6 text-left">
+                                        "Kalkulasi secepat cahaya. Seribu tahun pengetahuan diringkas menjadi 60 menit. Orhcestrated by The Sovereign One."
+                                    </p>
+                                )}
                             </div>
                         </div>
 
-                        {/* 30% Material Side */}
-                        <div className="glass-effect rounded-[2.5rem] p-10 border-amber-500/20">
-                            <div className="flex justify-between items-start mb-6">
-                                <h2 className="text-3xl font-bold text-amber-400 uppercase tracking-tight">Material Universe</h2>
-                                <span className="text-5xl font-black text-amber-500/20">30%</span>
+                        <div 
+                            className={`col-span-1 md:col-span-4 rounded-[2rem] p-8 transition-all duration-700 glass-effect flex flex-col justify-between relative overflow-hidden
+                                ${activeSide === 'material' ? 'border-amber-500/40 bg-amber-950/10' : ''}`}
+                            onMouseEnter={() => setActiveSide('material')} onMouseLeave={() => setActiveSide(null)}
+                        >
+                            <div className="flex justify-between items-start">
+                                <div><div className="text-amber-500 font-bold tracking-tighter text-sm mb-1 uppercase text-left">Dimension B</div><span className="text-7xl font-black text-amber-500/10">30%</span><h2 className="text-3xl font-bold text-amber-400 mt-2 uppercase text-left">Material</h2></div>
+                                <div className="w-12 h-12 text-amber-400/50 transition-transform text-4xl flex items-center justify-center">🧘</div>
                             </div>
-                            <ul className="space-y-8 mt-4">
-                                <li className="flex items-center gap-5 text-amber-100/90 font-semibold">
-                                    <span className="text-2xl">☕</span> Sovereign's Coffee
-                                </li>
-                                <li className="flex items-center gap-5 text-amber-100/90 font-semibold group">
-                                    <span className="text-2xl">🧘</span> 
-                                    <a href="https://taotsm.org/mengenal-dao-yin-shu-%E5%B0%8E%E5%BC%95%E8%A1%93/" target="_blank" className="underline decoration-amber-500/30 hover:text-amber-400 transition-all text-xl">Dao Yin Shu</a>
-                                </li>
-                                <li className="flex items-center gap-5 text-amber-100/90 font-semibold">
-                                    <span className="text-2xl">🛡️</span> Kesadaran Batin
-                                </li>
-                            </ul>
-                            <p className="mt-10 text-amber-500/50 italic text-xs leading-relaxed text-center">
-                                "Yi ban you wo, yi ban you tian."
-                            </p>
+                            <div className="space-y-6 my-8 text-left">
+                                <div className="flex items-center gap-4 text-amber-200/90"><div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center font-bold">☕</div><span className="font-medium text-xs uppercase tracking-widest">Sovereign's Coffee</span></div>
+                                <div className="flex items-center gap-4 text-amber-200/90"><div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center font-bold">🛡️</div><span className="font-medium text-xs uppercase tracking-widest">Kesadaran Batin</span></div>
+                            </div>
+                            <div className="bg-amber-500/5 p-4 rounded-2xl border border-amber-500/10 text-center"><p className="text-amber-100/70 italic text-[10px] leading-relaxed uppercase tracking-widest">"Yan Xing Duan Zheng.<br/>Yi ban you wo, yi ban you tian."</p></div>
                         </div>
                     </div>
 
-                    {/* Manifesto Section (Integrated Section) */}
-                    <section className="glass-effect rounded-[2.5rem] p-10 md:p-16 w-full max-w-6xl mb-20 shadow-2xl shadow-blue-900/20">
-                        <div className="flex justify-center gap-6 mb-12">
-                            <button onClick={() => setLang('id')} className={`px-6 py-2 rounded-full text-xs font-bold tracking-widest transition-all ${lang === 'id' ? 'bg-amber-500 text-slate-900 shadow-xl shadow-amber-500/40' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>ID</button>
-                            <button onClick={() => setLang('en')} className={`px-6 py-2 rounded-full text-xs font-bold tracking-widest transition-all ${lang === 'en' ? 'bg-amber-500 text-slate-900 shadow-xl shadow-amber-500/40' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}`}>EN</button>
+                    <footer className="z-10 mt-12 text-center max-w-3xl">
+                        <div className="inline-block px-8 py-3 rounded-full border border-slate-700 bg-slate-900/80 mb-6 shadow-xl shadow-blue-900/10 hover:border-amber-500/50 transition-colors cursor-pointer group uppercase italic font-bold">
+                            <span className="text-amber-400 tracking-[0.4em] text-xs group-hover:text-amber-300">Bejo: Readiness meet Momentum</span>
                         </div>
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                                {lang === 'id' ? 'Manifesto Kedaulatan' : 'Sovereign Manifesto'}
-                            </h2>
-                            <p className="text-amber-400 font-medium text-lg italic opacity-80">
-                                {lang === 'id' ? 'Lima Pilar AI yang Memanusiakan dalam Ekosistem 70/30' : 'Five Pillars of Human-Centric AI in the 70/30 Ecosystem'}
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                            {pillars.map(p => (
-                                <div key={p.id} className={`p-8 rounded-3xl bg-slate-900/40 border-t-8 ${p.color} hover:-translate-y-2 transition-all duration-300`}>
-                                    <h3 className="font-black text-xs text-white mb-4 uppercase tracking-widest">{lang === 'id' ? p.title.id : p.title.en}</h3>
-                                    <p className="text-xs text-slate-400 leading-relaxed font-medium">{lang === 'id' ? p.desc.id : p.desc.en}</p>
-                                </div>
-                            ))}
-                        </div>
-                        <div className="mt-16 text-center border-t border-slate-700/50 pt-8">
-                            <p className="text-slate-500 italic text-sm opacity-60">
-                                {lang === 'id' ? '"AI harus melindungi manusia. Saya memastikan itu terjadi." — Rhiana Spring' : '"AI should protect people. I’m making sure it does." — Rhiana Spring'}
-                            </p>
-                        </div>
-                    </section>
-
-                    {/* Footer Section */}
-                    <footer className="text-center pb-20 w-full">
-                        <div className="inline-block px-10 py-3 border border-slate-700 rounded-full mb-8 text-amber-400 font-bold text-sm tracking-[0.4em] bg-slate-900/60 shadow-inner">
-                            BEJO: READINESS MEET MOMENTUM
-                        </div>
-                        <p className="text-xs text-slate-600 uppercase tracking-[0.2em] leading-loose">
-                            Arsitektur Otonom oleh Go Kian Tik (自主者). 
-                            <br/>© 2026 Mbah Hogi Bejo • Chief Humanity Officer
+                        <p className="text-slate-500 text-[10px] leading-relaxed max-w-lg mx-auto uppercase tracking-widest opacity-60">
+                            Arsitektur Otonom oleh Go Kian Tik (自主者). <br/>© 2026 Mbah Hogi Bejo • Chief Humanity Officer
                         </p>
                     </footer>
                 </div>
             );
         };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        const root = ReactDOM.createRoot(document.getElementById('root')); root.render(<App />);
     </script>
 </body>
 </html>
