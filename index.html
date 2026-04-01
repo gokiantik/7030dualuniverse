@@ -1,152 +1,191 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sovereign Governance v1.8 - GKT for UN</title>
+    <title>GKT | Sovereign Governance for UN</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .diamond-shape {
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.2); }
+        .neng-card:hover { transform: translateY(-5px); border-color: #3b82f6; box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 min-h-screen">
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden">
 
-    <div class="max-w-6xl mx-auto p-6 md:p-12">
-        <header class="text-center mb-16 border-b border-slate-800 pb-10">
-            <div class="flex justify-center mb-4 text-blue-500">
-                <i data-lucide="globe" class="w-12 h-12 animate-pulse"></i>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-white mb-4">
-                SOVEREIGN <span class="text-blue-500">GOVERNANCE</span>
-            </h1>
-            <p class="text-xl text-slate-400 italic max-w-2xl mx-auto">
-                "Proposed Solution for António Guterres: Moving from AI Control to Human Sovereignty via Z3 SCI Framework"
-            </p>
-        </header>
+    <nav class="fixed top-0 w-full z-50 glass px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold">Z3</div>
+            <span class="font-bold tracking-tighter text-xl">Zì Zhǔ Zhě</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+            <a href="#diamond" class="hover:text-blue-400 transition">Diamond Logic</a>
+            <a href="#neng" class="hover:text-blue-400 transition">12 Mastery</a>
+            <a href="#formula" class="hover:text-blue-400 transition">Grand Formula</a>
+        </div>
+        <a href="https://zenodo.org/communities/zizhu-zhe" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-full text-[10px] font-bold transition">VIEW ALL DOI</a>
+    </nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            
-            <div class="lg:col-span-5 bg-slate-900/50 p-8 rounded-3xl border border-blue-500/30 relative">
-                <h2 class="text-2xl font-bold mb-10 flex items-center gap-3">
-                    <i data-lucide="shield" class="text-blue-400"></i> Diamond Zì Zhǔ Zhě
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 text-center relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
+        <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+            GOVERNING THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">TRANSFORMATION</span>
+        </h1>
+        <p class="text-xl text-slate-400 max-w-3xl mb-10 leading-relaxed italic">
+            "The question is whether we will govern this transformation together – or let it govern us." <br>
+            <span class="text-blue-500 font-bold not-italic">— António Guterres, UN Secretary-General</span>
+        </p>
+        <div class="flex gap-4">
+            <a href="#diamond" class="bg-white text-slate-950 px-8 py-4 rounded-full font-bold hover:bg-blue-400 transition">Explore Solution</a>
+            <a href="https://www.linkedin.com/in/go-kian-tik-11816223b/" target="_blank" class="border border-slate-700 px-8 py-4 rounded-full font-bold hover:border-blue-500 transition">Contact CHO</a>
+        </div>
+    </section>
+
+    <section id="diamond" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-black mb-6 flex items-center gap-3">
+                    <i data-lucide="zap" class="text-amber-400"></i> THE DIAMOND LOGIC
                 </h2>
-                
-                <div class="flex flex-col items-center space-y-6 relative">
-                    <div class="w-full p-5 bg-blue-600/20 border border-blue-500 rounded-2xl text-center shadow-lg shadow-blue-500/10">
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-blue-400 font-bold">The Cause</span>
-                        <div class="text-2xl font-black text-white mt-1">PILIHAN (Choice)</div>
+                <p class="text-slate-400 mb-8 leading-relaxed">
+                    Solusi untuk PBB bukan pada pembatasan algoritma, tapi pada restu kedaulatan manusia. Dalam framework <strong>Z3 SCI</strong>, kita memisahkan proses menjadi tiga tahap absolut:
+                </p>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="flex-none w-10 h-10 rounded-full bg-blue-600/20 border border-blue-500 flex items-center justify-center text-blue-400 font-bold">1</div>
+                        <div>
+                            <h4 class="font-bold text-white uppercase text-sm">Cause: Pilihan (Choice)</h4>
+                            <p class="text-xs text-slate-500">Kedaulatan penuh manusia dalam menentukan arah awal.</p>
+                        </div>
                     </div>
-
-                    <i data-lucide="arrow-down" class="text-slate-700"></i>
-
-                    <div class="w-full p-5 bg-slate-800 border border-slate-700 rounded-2xl text-center">
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">The Bridge</span>
-                        <div class="text-xl font-bold text-slate-400 italic mt-1 uppercase">Calculation (AI)</div>
+                    <div class="flex gap-4">
+                        <div class="flex-none w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-500 font-bold">2</div>
+                        <div>
+                            <h4 class="font-bold text-white uppercase text-sm">Bridge: Calculation (AI)</h4>
+                            <p class="text-xs text-slate-500">AI bekerja sebagai mesin hitung asisten kognitif, bukan pengambil keputusan.</p>
+                        </div>
                     </div>
-
-                    <i data-lucide="arrow-down" class="text-slate-700"></i>
-
-                    <div class="w-full p-5 bg-amber-600/20 border border-amber-500 rounded-2xl text-center shadow-lg shadow-amber-500/10">
-                        <span class="text-[10px] uppercase tracking-[0.2em] text-amber-400 font-bold">The Accountability</span>
-                        <div class="text-2xl font-black text-amber-100 mt-1">KONSEKUENSI</div>
+                    <div class="flex gap-4">
+                        <div class="flex-none w-10 h-10 rounded-full bg-emerald-600/20 border border-emerald-500 flex items-center justify-center text-emerald-400 font-bold">3</div>
+                        <div>
+                            <h4 class="font-bold text-white uppercase text-sm">Consequence: Tanggung Jawab</h4>
+                            <p class="text-xs text-slate-500">Manusia memeluk hasil akhir sebagai konsekuensi moral dan profesional.</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="mt-10 p-4 bg-slate-950/50 rounded-xl border-l-4 border-blue-500 text-sm leading-relaxed text-slate-400 italic">
-                    "Di alam, sebab melahirkan akibat. Bagi manusia yang berdaulat, sebab melahirkan konsekuensi. AI hanyalah mesin hitung di tengahnya."
                 </div>
             </div>
-
-            <div class="lg:col-span-7 space-y-6">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl">
-                        <h3 class="text-blue-400 font-bold text-sm mb-1 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4"></i> 70% DIGITAL
-                        </h3>
-                        <p class="text-[11px] text-slate-500 leading-tight">Software, Energy, Time, Internet. Arena bagi AI Calculation.</p>
+            <div class="glass p-10 rounded-[40px] border-blue-500/30 flex justify-center">
+                <div class="relative w-64 h-64 border-2 border-dashed border-slate-700 rotate-45 flex items-center justify-center">
+                    <div class="absolute -top-10 -left-10 -rotate-45 text-center">
+                        <div class="bg-blue-600 p-3 rounded-lg font-black text-xs">PILIHAN</div>
                     </div>
-                    <div class="p-6 bg-slate-900 border border-slate-800 rounded-2xl">
-                        <h3 class="text-emerald-400 font-bold text-sm mb-1 flex items-center gap-2">
-                            <i data-lucide="user-check" class="w-4 h-4"></i> 30% MATERIAL
-                        </h3>
-                        <p class="text-[11px] text-slate-500 leading-tight">Man, Method, Money, Machine. Arena bagi Kedaulatan Nyata.</p>
+                    <div class="absolute -bottom-10 -right-10 -rotate-45 text-center">
+                        <div class="bg-emerald-600 p-3 rounded-lg font-black text-xs">KONSEKUENSI</div>
                     </div>
-                </div>
-
-                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 relative overflow-hidden">
-                    <h3 class="text-xl font-bold mb-8 flex justify-between items-center">
-                        12 Néng Mastery Engine
-                        <span class="text-[10px] font-normal text-slate-500 tracking-widest uppercase">Legacy of Tao Zhu Gong</span>
-                    </h3>
-
-                    <div id="neng-grid" class="grid grid-cols-3 md:grid-cols-4 gap-3">
-                        </div>
-
-                    <div id="display-area" class="mt-8 p-6 bg-blue-600/10 border border-blue-500/30 rounded-2xl hidden min-h-[100px]">
-                        <h4 id="neng-title" class="text-xl font-bold text-blue-400 mb-2"></h4>
-                        <p id="neng-desc" class="text-slate-300 text-sm leading-relaxed"></p>
+                    <div class="w-24 h-24 bg-slate-800 rounded-full -rotate-45 flex items-center justify-center border-2 border-blue-400 animate-pulse">
+                        <span class="text-[10px] font-bold uppercase tracking-tighter">AI Engine</span>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <footer class="mt-20 pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-slate-600 tracking-widest">
-            <div class="text-center md:text-left">
-                <p class="font-bold text-slate-400">CHIEF HUMANITY OFFICER</p>
-                <p>GO KIAN TIK (GKT) | Z3 SCI FRAMEWORK</p>
+    <section id="neng" class="py-24 bg-slate-900/30 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4">12 NÉNG: THE MASTERY ENGINE</h2>
+                <p class="text-slate-500 uppercase tracking-[0.3em] text-xs">Human Capacity Standards for Global AI Governance</p>
             </div>
-            <div class="px-6 py-2 bg-slate-900 rounded-full border border-slate-800 italic text-blue-500">
-                (Consciousness × Calculation) ^ Humanity < Transcendence
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12" id="neng-grid">
+                </div>
+
+            <div id="neng-detail" class="glass p-8 rounded-3xl border-blue-500/50 hidden animate-in fade-in slide-in-from-bottom-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div class="max-w-2xl">
+                        <h3 id="detail-title" class="text-3xl font-black text-blue-400 mb-2"></h3>
+                        <p id="detail-desc" class="text-slate-300 leading-relaxed"></p>
+                    </div>
+                    <a id="detail-doi" href="#" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-2xl flex items-center gap-2 shadow-xl shadow-blue-600/20">
+                        VERIFY MASTERY (DOI) <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
             </div>
-            <div class="text-right">
-                <p>DOI: 10.5281/zenodo.18935892</p>
-                <p>DEPOK - NEW YORK PIPELINE</p>
+        </div>
+    </section>
+
+    <section id="formula" class="py-24 px-6 text-center max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-10 text-slate-500">THE EVALUATION FORMULA</h2>
+        <div class="glass p-12 rounded-[50px] border-emerald-500/20">
+            <div class="text-3xl md:text-5xl font-mono font-bold tracking-tighter text-emerald-400">
+                (Consciousness &times; Calculation)<sup>Humanity</sup> < Transcendence
             </div>
-        </footer>
-    </div>
+            <p class="mt-8 text-slate-400 text-sm leading-relaxed italic">
+                "Setiap percepatan kalkulasi AI harus dikalikan dengan kesadaran manusia dan dipangkatkan oleh dimensi kemanusiaan kita, agar tetap berada di bawah kendali transendensi yang sehat."
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-slate-900 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+                <h4 class="font-black text-xl mb-4">GKT | Z3 SCI</h4>
+                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest">
+                    Chief Humanity Officer Framework <br> Depok - UN Global Pipeline
+                </p>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="flex gap-4 mb-4">
+                    <i data-lucide="linkedin" class="text-slate-400 hover:text-blue-500 cursor-pointer"></i>
+                    <i data-lucide="github" class="text-slate-400 hover:text-white cursor-pointer"></i>
+                    <i data-lucide="mail" class="text-slate-400 hover:text-emerald-500 cursor-pointer"></i>
+                </div>
+                <span class="text-[10px] text-slate-700">DOI: 10.5281/zenodo.18935892</span>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-slate-400 text-xs">This artifact is a digital twin of the "Master Leveling Prompt v1.8"</p>
+                <p class="font-bold text-white mt-2">THE SOVEREIGN ONE © 2026</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         const nengData = [
-            { hanzi: "能識人", pinyin: "Néng Shí Rén", desc: "Kemampuan menilai karakter & niat di balik setiap algoritma/orang." },
-            { hanzi: "能接納", pinyin: "Néng Jiē Nà", desc: "Kapasitas menerima data dan realitas tanpa bias ego." },
-            { hanzi: "能安業", pinyin: "Néng Ān Yè", desc: "Menjaga fokus di tengah distrupsi teknologi yang luar biasa cepat." },
-            { hanzi: "能整頓", pinyin: "Néng Zhěng Dùn", desc: "Kemampuan menertibkan sistem yang chaos menjadi harmoni." },
-            { hanzi: "能敏捷", pinyin: "Néng Mǐn Jié", desc: "Kecepatan adaptasi kognitif manusia yang melampaui mesin." },
-            { hanzi: "能討賬", pinyin: "Néng Tǎo Zhàng", desc: "Kemampuan menagih kedaulatan yang terambil oleh sistem digital." },
-            { hanzi: "能用人", pinyin: "Néng Yòng Rén", desc: "Keahlian mengorkestrasi kolaborasi antara manusia dan AI." },
-            { hanzi: "能辨論", pinyin: "Néng Biàn Lùn", desc: "Ketajaman diplomasi untuk menetapkan standar etika global." },
-            { hanzi: "能辦貨", pinyin: "Néng Bàn Huò", desc: "Penguasaan atas sumber daya data dan material berkualitas." },
-            { hanzi: "能知機", pinyin: "Néng Zhī Jī", desc: "Membaca peluang masa depan sebelum menjadi arus utama." },
-            { hanzi: "能倡率", pinyin: "Néng Chàng Lǜ", desc: "Memberikan teladan sebagai 'The Sovereign One'." },
-            { hanzi: "能運數", pinyin: "Néng Yùn Shù", desc: "Mengelola kalkulasi nasib dan angka melalui kedaulatan diri." }
+            { id: 1, hanzi: "能識人", pinyin: "Néng Shí Rén", desc: "Humanity Audit: Kapasitas menilai karakter dan niat di balik setiap baris algoritma. Tanpa kapasitas ini, manusia tertipu oleh simulasi.", doi: "https://zenodo.org/record/18935892" },
+            { id: 10, hanzi: "能知機", pinyin: "Néng Zhī Jī", desc: "Strategic Foresight: Membaca momentum perubahan peradaban sebelum AI menjadikannya arus utama. Kedaulatan mendahului tren.", doi: "https://www.linkedin.com/in/go-kian-tik-11816223b/" },
+            { id: 12, hanzi: "能運數", pinyin: "Néng Yùn Shù", desc: "Consciousness Control: Mengelola angka dan nasib melalui kedaulatan batin, memastikan kalkulasi mesin tidak menggantikan intuisi manusia.", doi: "https://zenodo.org/record/19161186" },
+            { id: 9, hanzi: "能辦貨", pinyin: "Néng Bàn Huò", desc: "Cognitive Integrity: Kapasitas pengadaan data dan pengetahuan yang murni (Anti-GIGO), menjaga kualitas input kognitif global.", doi: "https://zenodo.org/record/19115919" },
+            { id: 5, hanzi: "能敏捷", pinyin: "Néng Mǐn Jié", desc: "Agility Mastery: Kecepatan adaptasi kognitif yang melampaui otomatisasi, memungkinkan interupsi manusia di setiap proses AI.", doi: "https://zenodo.org/record/19077271" },
+            { id: 11, hanzi: "能倡率", pinyin: "Néng Chàng Lǜ", desc: "Sovereign Leadership: Menjadi teladan kedaulatan (Zì Zhǔ Zhě) dalam memimpin transformasi digital di level negara dan organisasi.", doi: "https://zenodo.org/record/18935892" },
+            { id: 8, hanzi: "能辨論", pinyin: "Néng Biàn Lùn", desc: "Diplomacy Mastery: Ketajaman dalam menegosiasikan standar etika dan hukum AI di panggung dunia (Radius 6).", doi: "https://www.un.org/global-dialogue-ai-governance/" },
+            { id: 7, hanzi: "能用人", pinyin: "Néng Yòng Rén", desc: "AI Orchestration: Kemampuan menempatkan AI sebagai 'asisten' dan manusia sebagai 'tuan', menjaga hirarki kedaulatan.", doi: "https://zenodo.org/record/18935892" }
         ];
 
         const grid = document.getElementById('neng-grid');
-        const display = document.getElementById('display-area');
-        const title = document.getElementById('neng-title');
-        const desc = document.getElementById('neng-desc');
+        const detail = document.getElementById('neng-detail');
+        const dTitle = document.getElementById('detail-title');
+        const dDesc = document.getElementById('detail-desc');
+        const dDoi = document.getElementById('detail-doi');
 
         nengData.forEach(n => {
-            const btn = document.createElement('button');
-            btn.className = "p-4 bg-slate-800 hover:bg-blue-600 rounded-xl transition-all duration-300 border border-slate-700 hover:border-blue-400 group";
-            btn.innerHTML = `<div class="text-2xl font-bold group-hover:scale-110 transition-transform">${n.hanzi}</div><div class="text-[8px] text-slate-500 group-hover:text-blue-100 mt-1 uppercase">${n.pinyin}</div>`;
-            
-            btn.onclick = () => {
-                display.classList.remove('hidden');
-                title.innerText = `${n.hanzi} (${n.pinyin})`;
-                desc.innerText = n.desc;
-                // Scroll effect for mobile
-                display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            const card = document.createElement('div');
+            card.className = "neng-card glass p-6 rounded-2xl text-center cursor-pointer transition-all duration-300";
+            card.innerHTML = `
+                <div class="text-3xl font-black text-white mb-2">${n.hanzi}</div>
+                <div class="text-[10px] text-blue-400 font-bold tracking-widest uppercase">${n.pinyin}</div>
+            `;
+            card.onclick = () => {
+                detail.classList.remove('hidden');
+                dTitle.innerText = `${n.hanzi} — ${n.pinyin}`;
+                dDesc.innerText = n.desc;
+                dDoi.href = n.doi;
+                detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             };
-            grid.appendChild(btn);
+            grid.appendChild(card);
         });
 
-        // Initialize Lucide Icons
         lucide.createIcons();
     </script>
 </body>
